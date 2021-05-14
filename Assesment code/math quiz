@@ -1,20 +1,44 @@
 import random
+print("-------------------")
+print("Asking user details")
+print("The quiz will start after the requirements are meet")
+print("-------------------")
 
 #asking user name With a code that will only accept letters.
 while True:
+ print("----------------")
  name = input("what is your name?\t")
+ print("----------------")
  if name .isalpha():
     break
  print("please enter a valid response!.")
-
+print("----------------")
 print ("hello : " + name)
+print("----------------")
+
+while True:
+  print("please put current status")
+  print("----------------")
+  status = input("enter status\t")
+  print("----------------")
+  if status.isalpha():
+    print("----------------")
+    print("you are a ",status)
+    print("----------------")
+    break
+  else:
+    print("please enter a valid response!.")
 
 #asking user age with a code that only accepts numbers
 while True:
-  age = input("how old are you? ")
+  print("----------------")
+  age = input("how old are you?\t")
+  print("----------------")
   if age.isnumeric() == True:
     age = "16"
-    print("your age is "+ age,"you have enough knowlege to answer these questions!.")
+    print("----------------")
+    print("your age is "+ age,""+ name,"Thank you for the respone enjoy!")
+    print("----------------")
     break
   else:
     print("please enter a valid response!.")
