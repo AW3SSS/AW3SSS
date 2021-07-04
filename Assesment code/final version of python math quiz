@@ -1,0 +1,181 @@
+import random
+
+
+print("----------------------------------------------------")
+print("Asking user details for the quiz:")
+print("The quiz will start after the requirements are meet:")
+print("----------------------------------------------------")
+
+#asking user name With a code that will only accept letters.
+def requirements_1():
+  while True:
+    print("----------------")
+    name = input("what is your name?\t")
+    if name.isalpha():
+      break
+    print("please enter a valid response!.")
+    print("----------------")
+    print ("hello : " + name)
+
+def requirements_2():
+  while True:
+    print("please put number status")
+    print("----------------")
+    status = input("enter status\t")
+    if status.isalpha():
+      print("----------------")
+      print("you are a ",status)
+      break
+    else:
+      print("please enter a valid response!.")
+
+#asking user age with a code that only accepts numbers
+def requirements_3():
+  while True:
+    print("----------------")
+    age = input("how old are you?\t")
+    if age.isnumeric() == True:
+      print("----------------")
+      print("your age is "+ age,"Thank you for the respone enjoy!")
+      break
+    else:
+      print("please enter a valid response!.")
+  
+
+  
+
+#starting point of the quiz
+def display_intro():
+    title = "-- Welcome to Math Quiz --"
+    subtitle = "-- type/choose the numbers below to play --"
+    print("-" * len(title))
+    print(title)
+    print("-" * len(title))
+    print("-" * len(subtitle))
+    print(subtitle)
+    print("-" * len(subtitle))
+
+
+#display of the menu
+def display_menu():
+    menu_list = ["1.)Addition", "2.)Subtraction", "3.)Multiplication", "4.)Division", "5.)Quit"]
+    print(menu_list[0])
+    print(menu_list[1])
+    print(menu_list[2])
+    print(menu_list[3])
+    print(menu_list[4])
+
+
+
+
+def display_separator():
+    print("-" * 24)
+
+
+#user choices/interactions
+def get_user_input():
+    user_input = int(input("Enter your choice:\t"))
+    print("-----------------")
+    while user_input > 5 or user_input <= 0:
+        print("Invalid menu option.")
+        user_input = int(input("please enter a valid response!:\t"))
+    else:
+        return user_input
+
+
+
+
+def get_user_solution(problem):
+    print("Enter your answer")
+    print(problem, end="")
+    result = int(input(" =?\t"))
+    return result
+
+
+
+#checking of the quiz
+def check_solution(user_solution, solution, count):
+    if user_solution == solution:
+        count = count + 1
+        print("result:")
+        print("Correct.")
+        return count
+    else:
+        print("result:")
+        print("Incorrect.")
+        return count
+
+
+
+#multiple choices of the quiz
+def menu_option(index, count):
+    number_one = random.randrange(1, 21)
+    number_two = random.randrange(1, 21)
+    if index == 1:
+        problem = str(number_one) + " + " + str(number_two)
+        solution = number_one + number_two
+        user_solution = get_user_solution(problem)
+        count = check_solution(user_solution, solution, count)
+        return count
+    elif index == 2:
+        problem = str(number_one) + " - " + str(number_two)
+        solution = number_one - number_two
+        user_solution = get_user_solution(problem)
+        count = check_solution(user_solution, solution, count)
+        return count
+    elif index == 3:
+        problem = str(number_one) + " * " + str(number_two)
+        solution = number_one * number_two
+        user_solution = get_user_solution(problem)
+        count = check_solution(user_solution, solution, count)
+        return count
+    else:
+        problem = str(number_one) + " ~ " + str(number_two)
+        solution = number_one // number_two
+        user_solution = get_user_solution(problem)
+        count = check_solution(user_solution, solution, count)
+        return count
+
+
+
+
+#game score or game summary
+def display_result(total, correct):
+    if total > 0:
+        result = correct / total
+        percentage = round((result * 100), 2)
+    if total == 0:
+        percentage = 0
+    print("You answered", total, "questions with", correct, "correct answer.")
+    print("Your score is ", percentage, "%. Thank you for playing.", sep = "")
+
+
+
+def main():
+    display_intro()
+    display_menu()
+    display_separator()
+
+    option = get_user_input()
+    total = 0
+    correct = 0
+    while option != 5:
+        total = total + 1
+        correct = menu_option(option, correct)
+        option = get_user_input()
+
+    print("you quit the quiz.")
+    display_separator()
+    display_result(total, correct)
+
+
+
+
+requirements_1()
+requirements_2()
+requirements_3()
+get_user_input()
+get_user_solution()
+check_solution()
+display_result()
+main()
