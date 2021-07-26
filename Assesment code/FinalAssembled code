@@ -1,45 +1,50 @@
 import random
 
 #asking user name With a code that will only accept letters.
-def requirements_1():
-  while True:
+def requirement():
+ while True:
+  print("----------------")
+  name = input("what is your name?\t")
+  print("----------------")
+  if name .isalpha():
+     break
+  print("please enter a valid response!.")
+ print("----------------")
+ print ("hello : " + name)
+ print("----------------")
+
+ while True:
+  print("please put current status ex:student,parent,teacher")
+  print("----------------")
+  status = input("enter status\t")
+  print("----------------")
+  if status.isalpha():
     print("----------------")
-    name = input("what is your name?\t")
-    if name.isalpha():
-      break
+    print("you are a ",status)
+    print("----------------")
+    break
+  else:
     print("please enter a valid response!.")
-    print("----------------")
-    print ("hello : " + name)
-		
-#status is a requirement where u use what situation your in.
-def requirements_2():
-  while True:
-    print("please put number status")
-    print("----------------")
-    status = input("enter status\t")
-    if status.isalpha():
-      print("----------------")
-      print("you are a ",status)
-      break
-    else:
-      print("please enter a valid response!.")
 
 #asking user age with a code that only accepts numbers
-def requirements_3():
-  while True:
+ while True:
+  print("----------------")
+  age = input("how old are you?\t")
+  print("----------------")
+  if age.isnumeric() == True:
+    age = "16"
     print("----------------")
-    age = input("how old are you?\t")
-    if age.isnumeric() == True:
-      print("----------------")
-      print("your age is "+ age,"Thank you for the respone enjoy!")
-      break
-    else:
-      print("please enter a valid response!.")
-  
+    print("your age is "+ age,""+ name,"Thank you for the respone enjoy!")
+    print("----------------")
+    break
+  else:
+    print("please enter a valid response!.")
 
   
 
-#starting point of the quiz
+  
+
+#intro of the quiz
 def display_intro():
     title = "-- Welcome to Math Quiz --"
     subtitle = "-- type/choose the numbers below to play --"
@@ -49,7 +54,6 @@ def display_intro():
     print("-" * len(subtitle))
     print(subtitle)
     print("-" * len(subtitle))
-
 
 #display of the menu
 def display_menu():
@@ -61,46 +65,34 @@ def display_menu():
     print(menu_list[4])
 
 
-
-
 def display_separator():
     print("-" * 24)
 
-
 #user choices/interactions
 def get_user_input():
-    user_input = int(input("Enter your choice:\t"))
-    print("-----------------")
+    user_input = int(input("Enter your choice: "))
     while user_input > 5 or user_input <= 0:
         print("Invalid menu option.")
-        user_input = int(input("please enter a valid response!:\t"))
+        user_input = int(input("Please try again: "))
     else:
         return user_input
-
-
 
 
 def get_user_solution(problem):
     print("Enter your answer")
     print(problem, end="")
-    result = int(input(" =?\t"))
+    result = int(input(" =?  "))
     return result
-
-
 
 #checking of the quiz
 def check_solution(user_solution, solution, count):
     if user_solution == solution:
         count = count + 1
-        print("result:")
         print("Correct.")
         return count
     else:
-        print("result:")
         print("Incorrect.")
         return count
-
-
 
 #multiple choices of the quiz
 def menu_option(index, count):
@@ -131,9 +123,6 @@ def menu_option(index, count):
         count = check_solution(user_solution, solution, count)
         return count
 
-
-
-
 #game score or game summary
 def display_result(total, correct):
     if total > 0:
@@ -143,7 +132,6 @@ def display_result(total, correct):
         percentage = 0
     print("You answered", total, "questions with", correct, "correct answer.")
     print("Your score is ", percentage, "%. Thank you for playing.", sep = "")
-
 
 
 def main():
@@ -163,18 +151,10 @@ def main():
     display_separator()
     display_result(total, correct)
 
+print("-------------------")
+print("Asking user details")
+print("The quiz will start after the requirements are meet")
+print("-------------------")
 
-
-print("----------------------------------------------------")
-print("Asking user details for the quiz:")
-print("The quiz will start after the requirements are meet:")
-print("----------------------------------------------------")
-
-requirements_1()
-requirements_2()
-requirements_3()
-get_user_input()
-get_user_solution()
-check_solution()
-display_result()
+requirement()
 main()
